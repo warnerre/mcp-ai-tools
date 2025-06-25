@@ -1,0 +1,75 @@
+{
+  "agents": [
+    {
+      "name": "file_agent",
+      "class": "FileAgent",
+      "capabilities": [
+        "file_operations",
+        "directory_operations", 
+        "file_search",
+        "file_analysis"
+      ],
+      "supported_task_types": [
+        "read_file",
+        "write_file",
+        "list_directory",
+        "search_files",
+        "analyze_file"
+      ],
+      "priority": 5,
+      "max_concurrent_tasks": 3,
+      "config": {
+        "max_file_size": "10MB",
+        "allowed_extensions": ["txt", "json", "py", "md", "yml", "yaml"],
+        "base_directory": "."
+      }
+    },
+    {
+      "name": "task_agent", 
+      "class": "TaskAgent",
+      "capabilities": [
+        "task_management",
+        "workflow_coordination",
+        "task_scheduling",
+        "task_monitoring"
+      ],
+      "supported_task_types": [
+        "create_workflow",
+        "execute_workflow", 
+        "monitor_workflow",
+        "pause_workflow",
+        "resume_workflow"
+      ],
+      "priority": 7,
+      "max_concurrent_tasks": 5,
+      "config": {
+        "max_workflow_depth": 10,
+        "default_timeout": 300,
+        "retry_attempts": 3
+      }
+    },
+    {
+      "name": "coordinator_agent",
+      "class": "CoordinatorAgent", 
+      "capabilities": [
+        "agent_coordination",
+        "workflow_orchestration",
+        "resource_allocation",
+        "conflict_resolution"
+      ],
+      "supported_task_types": [
+        "coordinate_agents",
+        "orchestrate_workflow",
+        "allocate_resources",
+        "resolve_conflicts"
+      ],
+      "priority": 10,
+      "max_concurrent_tasks": 1,
+      "config": {
+        "coordination_timeout": 60,
+        "max_agents_per_task": 5,
+        "conflict_resolution_strategy": "priority_based"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "framework": {
+    "name": "ai-agent-framework",
+    "version": "0.1.0",
+    "description": "Learning framework for MCP-based multi-agent systems"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "json",
+    "file": "logs/framework.log",
+    "console": true
+  },
+  "task_routing": {
+    "algorithm": "capability_match",
+    "fallback_strategy": "round_robin",
+    "timeout_seconds": 300,
+    "max_retries": 3
+  },
+  "context_management": {
+    "persistence": "file",
+    "storage_path": "data/contexts",
+    "max_contexts": 1000,
+    "cleanup_interval_hours": 24
+  },
+  "agent_registry": {
+    "health_check_interval": 30,
+    "max_unhealthy_count": 3,
+    "auto_restart": true
+  },
+  "orchestration": {
+    "max_concurrent_workflows": 10,
+    "workflow_timeout_minutes": 60,
+    "checkpoint_interval_seconds": 30
+  },
+  "security": {
+    "enable_authentication": false,
+    "api_key_required": false,
+    "allowed_origins": ["localhost"],
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100
+    }
+  },
+  "monitoring": {
+    "metrics_enabled": true,
+    "metrics_port": 8080,
+    "health_check_port": 8081,
+    "profiling_enabled": false
+  }
+}

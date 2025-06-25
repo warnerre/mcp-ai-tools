@@ -1,0 +1,80 @@
+{
+  "mcp_servers": [
+    {
+      "name": "file_operations_server",
+      "transport": {
+        "type": "stdio",
+        "command": "python",
+        "args": ["src/servers/file_operations_server.py"]
+      },
+      "tools": [
+        "read_file",
+        "write_file", 
+        "list_directory",
+        "create_directory",
+        "delete_file",
+        "copy_file",
+        "move_file",
+        "get_file_info"
+      ],
+      "resources": [
+        "file_system"
+      ],
+      "config": {
+        "max_file_size": "10MB",
+        "allowed_paths": ["."],
+        "denied_paths": ["/etc", "/sys", "/proc"]
+      }
+    },
+    {
+      "name": "task_management_server",
+      "transport": {
+        "type": "stdio", 
+        "command": "python",
+        "args": ["src/servers/task_management_server.py"]
+      },
+      "tools": [
+        "create_task",
+        "get_task",
+        "update_task_status", 
+        "list_tasks",
+        "delete_task",
+        "get_task_history"
+      ],
+      "resources": [
+        "task_queue",
+        "task_history"
+      ],
+      "config": {
+        "max_tasks": 1000,
+        "task_retention_days": 30,
+        "database_path": "data/tasks.db"
+      }
+    },
+    {
+      "name": "communication_server",
+      "transport": {
+        "type": "stdio",
+        "command": "python", 
+        "args": ["src/servers/communication_server.py"]
+      },
+      "tools": [
+        "send_message",
+        "broadcast_message",
+        "get_messages",
+        "create_channel",
+        "join_channel",
+        "leave_channel"
+      ],
+      "resources": [
+        "message_queues",
+        "channels"
+      ],
+      "config": {
+        "max_message_size": "1MB",
+        "message_retention_hours": 24,
+        "max_channels": 100
+      }
+    }
+  ]
+}
